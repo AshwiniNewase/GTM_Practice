@@ -1,0 +1,29 @@
+package AmazonProject_TestScenarios;
+
+import java.time.Duration;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+
+public class LaunchQuitAmazon 
+{
+	WebDriver driver;
+	@BeforeMethod
+	public void launchamazon()
+	{
+		driver=new FirefoxDriver();
+		driver.get("https://www.amazon.in");
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+	}
+	
+	@AfterMethod
+	public void quitamazon() throws InterruptedException
+	{
+		Thread.sleep(4000);
+		driver.quit();
+	}
+
+}
